@@ -1,0 +1,10 @@
+@use "mdb-vue-ui-kit/css/mdb.min.css";
+
+// Override button styles
+.btn-dark {
+  color: white !important;
+
+  &:hover, &:focus, &:active {
+    color: white !important;
+  }
+}
