@@ -30,51 +30,51 @@ import {
       icon: LayoutDashboardIcon,
       to: '/'
     },
-    { header: 'ui' },
-    {
-      title: "Alert",
-      icon: AlertCircleIcon,
-      to: "/ui-components/alerts",
-      
-    },
-    {
-      title: "Button",
-      icon: CircleDotIcon,
-      to: "/ui-components/buttons",
-    },
-    {
-      title: "Cards",
-      icon: BoxMultiple1Icon,
-      to: "/ui-components/cards",
-    },
-    {
-      title: "Tables",
-      icon: BorderAllIcon,
-      to: "/ui-components/tables",
-    },
-  
-    { header: 'Auth' },
-    {
-      title: 'Login',
-      icon: LoginIcon,
-      to: '/auth/login'
-  },
-  {
-      title: 'Register',
-      icon: UserPlusIcon,
-      to: '/auth/register'
-  },
-  { header: 'Extra' },
-  {
-      title: 'Icons',
-      icon: MoodHappyIcon,
-      to: '/pages/icons'
-  },
-  {
-      title: 'Sample Page',
-      icon: ApertureIcon,
-      to: '/pages/sample-page'
-  },
+  //   { header: 'ui' },
+  //   {
+  //     title: "Alert",
+  //     icon: AlertCircleIcon,
+  //     to: "/ui-components/alerts",
+  //
+  //   },
+  //   {
+  //     title: "Button",
+  //     icon: CircleDotIcon,
+  //     to: "/ui-components/buttons",
+  //   },
+  //   {
+  //     title: "Cards",
+  //     icon: BoxMultiple1Icon,
+  //     to: "/ui-components/cards",
+  //   },
+  //   {
+  //     title: "Tables",
+  //     icon: BorderAllIcon,
+  //     to: "/ui-components/tables",
+  //   },
+  //
+  //   { header: 'Auth' },
+  //   {
+  //     title: 'Login',
+  //     icon: LoginIcon,
+  //     to: '/auth/login'
+  // },
+  // {
+  //     title: 'Register',
+  //     icon: UserPlusIcon,
+  //     to: '/auth/register'
+  // },
+  // { header: 'Extra' },
+  // {
+  //     title: 'Icons',
+  //     icon: MoodHappyIcon,
+  //     to: '/pages/icons'
+  // },
+  // {
+  //     title: 'Sample Page',
+  //     icon: ApertureIcon,
+  //     to: '/pages/sample-page'
+  // },
   
   ];
   
