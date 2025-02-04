@@ -1,5 +1,5 @@
 export default defineNuxtConfig({
-
+  compatibilityDate: '2025-02-04',
   ssr: false,
   typescript: {
     shim: false,
@@ -20,5 +20,5 @@ export default defineNuxtConfig({
   },
   sourcemap: { server: false, client: false },
   devServerHandlers: [],
-  compatibilityDate: '2025-02-04'
+
 });
