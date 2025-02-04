@@ -9,6 +9,7 @@ const sDrawer = ref(true);
 </script>
 
 <template>
+<!--  Sidebar-->
     <v-navigation-drawer left v-model="sDrawer" app class="leftSidebar ml-sm-5 mt-sm-5 bg-containerBg" elevation="10"
         width="270">
         <div class="pa-5 pl-4 ">
@@ -29,13 +30,9 @@ const sDrawer = ref(true);
                 </template>
                 <!-- <Moreoption/> -->
             </v-list>
-            <div class="py-0 px-6">
-                <v-btn class="mr-2 bg-primary rounded-pill" size="large"
-                    href="https://www.wrappixel.com/templates/spike-nuxtjs-admin-template/?ref=33" block target="_blank">Upgrade to
-                    Pro</v-btn>
-            </div>  
         </perfect-scrollbar>
     </v-navigation-drawer>
+<!--  Header-->
     <div class="container verticalLayout">
         <div class="maxWidth">
             <v-app-bar elevation="0" height="70">
@@ -48,11 +45,8 @@ const sDrawer = ref(true);
                         <!-- Notification -->
                         <LayoutFullVerticalHeaderNotificationDD />
                     </div>
+
                     <div>
-                        <!-- Upgrade button -->
-                        <v-btn class="mr-2 bg-primary rounded-pill"
-                            href="https://www.wrappixel.com/templates/spike-nuxtjs-admin-template/?ref=33"
-                            target="_blank">Upgrade to Pro</v-btn>
                         <!-- User Profile -->
                         <LayoutFullVerticalHeaderProfileDD />
                     </div>

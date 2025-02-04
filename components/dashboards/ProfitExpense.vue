@@ -3,7 +3,7 @@ import { ref } from 'vue';
 import { computed } from 'vue';
 import { useTheme } from 'vuetify';
 import { DotsVerticalIcon } from 'vue-tabler-icons';
-import { MDBBtn,MDBModal,MDBModalHeader,MDBModalTitle,MDBModalBody,MDBModalFooter } from "mdb-vue-ui-kit";
+// import { MDBBtn,MDBModal,MDBModalHeader,MDBModalTitle,MDBModalBody,MDBModalFooter } from "mdb-vue-ui-kit";
 const items = ref([
     { title: "Action" },
     { title: "Another action" },
@@ -116,28 +116,6 @@ const chartOptions = computed(() => {
                     <h5 class="text-h5 mb-1 font-weight-semibold">Profit & Expenses</h5>
                 </div>
                 <div>
-                  <MDBBtn
-                      color="primary"
-                      aria-controls="exampleModal"
-                      @click="exampleModal=true"
-                  >
-                    Launch demo modal
-                  </MDBBtn>
-                  <MDBModal
-                      id="exampleModal"
-                      tabindex="-1"
-                      labelledby="exampleModalLabel"
-                      v-model="exampleModal"
-                  >
-                    <MDBModalHeader>
-                      <MDBModalTitle id="exampleModalLabel"> Modal title </MDBModalTitle>
-                    </MDBModalHeader>
-                    <MDBModalBody>...</MDBModalBody>
-                    <MDBModalFooter>
-                      <MDBBtn color="secondary" @click="exampleModal = false">Close</MDBBtn>
-                      <MDBBtn color="primary">Save changes</MDBBtn>
-                    </MDBModalFooter>
-                  </MDBModal>
                   <v-menu bottom left>
                         <template v-slot:activator="{ props }">
                             <v-btn icon color="inherit" v-bind="props" flat>

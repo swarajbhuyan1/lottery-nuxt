@@ -31,7 +31,7 @@ import ProductCards from "@/components/dashboards/ProductCards.vue";
             <ProductCards/>
         </v-col>
         <v-col class="text-center mt-2">
-            <p class="text-muted">Design and Developed by <a flat variant="text" href="https://www.wrappixel.com/" target="_blank" class="pl-1 text-primary">wrappixel.com</a></p>
+            <p class="text-muted">Design and Developed by <a flat variant="text" href="#" target="_blank" class="pl-1 text-primary">Lottery</a></p>
         </v-col>
     </v-row>
 </template>

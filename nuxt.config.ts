@@ -6,7 +6,7 @@ export default defineNuxtConfig({
   app: {
     head: {
       title:
-        "Spikeadmin Free Nuxt 3 Dashboard",
+        "Lottery Dashboard",
     },
   },
   css: ["~/assets/scss/index.scss"],
