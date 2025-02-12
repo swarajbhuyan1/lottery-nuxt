@@ -1,8 +1,10 @@
 <template>
-  <NuxtExampleLayout >
     <NuxtLoadingIndicator />
     <NuxtLayout>
       <NuxtPage/>
     </NuxtLayout>
-  </NuxtExampleLayout>
 </template>
+<script lang="ts" setup>
+const {loggedIn} = useUserSession()
+const layout =  (loggedIn.value) ? 'authenticated' : 'default';
+</script>

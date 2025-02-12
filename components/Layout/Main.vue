@@ -5,6 +5,7 @@ import sidebarItems from '@/components/Layout/Full/vertical-sidebar/sidebarItem'
 import { Menu2Icon, BellRingingIcon } from 'vue-tabler-icons';
 const sidebarMenu = shallowRef(sidebarItems);
 const sDrawer = ref(true);
+const {user} = useUserSession();
 
 </script>
 
@@ -45,7 +46,7 @@ const sDrawer = ref(true);
                         <!-- Notification -->
                         <LayoutFullVerticalHeaderNotificationDD />
                     </div>
-
+                    {{user.name}}
                     <div>
                         <!-- User Profile -->
                         <LayoutFullVerticalHeaderProfileDD />

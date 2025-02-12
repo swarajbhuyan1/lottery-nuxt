@@ -7,18 +7,45 @@ export default defineNuxtConfig({
   app: {
     head: {
       title:
-        "Lottery Dashboard",
+          "Lottery Application",
     },
   },
   css: ["~/assets/scss/index.scss"],
   build: {
     transpile: ["mdb-vue-ui-kit","vuetify"],
   },
-  modules: ['@pinia/nuxt'],
+  modules: [
+    'nuxt-auth-utils',
+    '@pinia/nuxt',
+    'pinia-plugin-persistedstate/nuxt',
+  ],
+  runtimeConfig: {
+    apiSecret: '123',
+    public: {
+      apiBaseUrl: 'http://localhost:3000/api/'
+    },
+    private: {
+      apiURL: process.env.NUXT_API_URL || 'http://localhost:3000/api/',
+    }
+  },
+  pinia: {
+    autoImports: [
+      'defineStore',
+      ['defineStore', 'definePiniaStore'],
+    ],
+  },
+  router: {
+    middleware: ['auth','guest']
+  },
   nitro: {
     serveStatic: true,
   },
   sourcemap: { server: false, client: false },
   devServerHandlers: [],
+  serverHandlers: [
+    {
+      handler: '~/server/middleware/axios.ts',
+    },
+  ],
 
 });

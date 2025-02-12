@@ -8,16 +8,17 @@
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare"
   },
-  "devDependencies": {
-    "@pinia/nuxt": "^0.9.0",
-    "nuxt": "3.7.4",
-    "pinia": "^2.3.1"
-  },
   "dependencies": {
     "@mdi/font": "^6.5.95",
     "@nuxt/vite-builder": "^3.7.4",
+    "@nuxtjs/axios": "^5.13.6",
+    "@pinia/nuxt": "^0.10.0",
     "apexcharts": "3.36.3",
     "mdb-vue-ui-kit": "^5.0.0",
+    "nuxt": "^3.15.4",
+    "nuxt-auth-utils": "^0.5.14",
+    "pinia": "^3.0.0",
+    "pinia-plugin-persistedstate": "^4.2.0",
     "sass": "^1.49.9",
     "vue": "^3.5.11",
     "vue-tabler-icons": "2.9.0",

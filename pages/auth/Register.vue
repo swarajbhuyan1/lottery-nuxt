@@ -2,6 +2,7 @@
 /*-For Set Blank Layout-*/
 definePageMeta({
   layout: "blank",
+  middleware: 'guest'
 });
 </script>
 <template>
