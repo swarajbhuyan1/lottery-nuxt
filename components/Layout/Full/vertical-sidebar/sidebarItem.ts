@@ -1,10 +1,10 @@
 import {
-    LayoutDashboardIcon,BorderAllIcon,
-    AlertCircleIcon,
-    CircleDotIcon,
-    BoxMultiple1Icon,
-    LoginIcon, MoodHappyIcon, ApertureIcon, UserPlusIcon
-  } from 'vue-tabler-icons';
+  LayoutDashboardIcon, BorderAllIcon,
+  AlertCircleIcon,
+  CircleDotIcon,
+  BoxMultiple1Icon,
+  LoginIcon, MoodHappyIcon, ApertureIcon, UserPlusIcon, TicketIcon
+} from 'vue-tabler-icons';
   
   export interface menu {
     header?: string;
@@ -30,13 +30,12 @@ import {
       icon: LayoutDashboardIcon,
       to: '/'
     },
-  //   { header: 'ui' },
-  //   {
-  //     title: "Alert",
-  //     icon: AlertCircleIcon,
-  //     to: "/ui-components/alerts",
-  //
-  //   },
+    { header: 'Game' },
+    {
+      title: "Join Slot",
+      icon: TicketIcon,
+      to: "/slot",
+    },
   //   {
   //     title: "Button",
   //     icon: CircleDotIcon,

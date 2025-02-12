@@ -1,4 +1,4 @@
-import {postLogin, getLogout} from '../controllers/auth.controller'
+import {postLogin, getLogout, postRegister, postVerifyOtp} from '../controllers/auth.controller'
 
 type HttpMethod = 'get' | 'post' | 'put' | 'delete';
 interface RouteElement {
@@ -14,6 +14,18 @@ export const routes:RouteElement[] = [
         url : '/login',
         middleware : [],
         handler: postLogin
+    },
+    {
+        method: 'post',
+        url : '/register',
+        middleware : [],
+        handler: postRegister
+    },
+    {
+        method: 'post',
+        url : '/verify-otp',
+        middleware : [],
+        handler: postVerifyOtp
     },
     {
         method: 'get',
