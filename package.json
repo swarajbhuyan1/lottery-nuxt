@@ -14,7 +14,7 @@
     "@nuxtjs/axios": "^5.13.6",
     "@pinia/nuxt": "^0.10.0",
     "apexcharts": "3.36.3",
-    "mdb-vue-ui-kit": "^5.0.0",
+    "mdb-vue-ui-kit": "./mdb/mdb-vue-ui-kit-5.0.0.tgz",
     "nuxt": "^3.15.4",
     "nuxt-auth-utils": "^0.5.14",
     "pinia": "^3.0.0",

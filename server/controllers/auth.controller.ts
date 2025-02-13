@@ -32,7 +32,7 @@ export const postLogin = async (event : H3Event) => {
             setResponseStatus(event, error.response.status, error.response.data.message);
             return {
                 error: "Error",
-                message: error.response.data.message,
+                message: error.response.data.error,
                 status: error.response.status
             };
 

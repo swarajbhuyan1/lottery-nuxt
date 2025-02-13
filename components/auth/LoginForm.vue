@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import { ref, computed } from "vue";
 import { useAuthStore } from "~/store/auth";
+import { MDBToast } from 'mdb-vue-ui-kit';
+import type {Toast} from "~/types/toast";
 
 // Pinia Store
 const auth = useAuthStore();
@@ -41,7 +43,10 @@ async function handleLogin() {
     }
 
     const response = await auth.login(payload);
-
+    message.value.show = true;
+    message.value.message = response.data.message;
+    message.value.type = 'success';
+    message.value.title = 'Success!';
     if (response?.status === 200) {
       reloadNuxtApp({
         path: "/",
@@ -50,15 +55,20 @@ async function handleLogin() {
     }
   } catch (error) {
     console.error("Login failed:", error);
+    message.value.show = true;
+    message.value.type = 'danger';
+    message.value.title = 'Error';
+    message.value.message = error.data.message;
   }
 }
+const message = ref<Toast>({ type: 'success', title: 'Success', message: 'Record was successfully updated', show: false });
 </script>
 
 <template>
+
   <div>
     <v-form ref="form" @submit.prevent="handleLogin">
       <v-row class="">
-
         <!-- Radio Button for Email or Mobile -->
         <v-col cols="12">
           <v-radio-group v-model="loginType" row class="w-100">
@@ -133,7 +143,25 @@ async function handleLogin() {
             Sign In
           </v-btn>
         </v-col>
+
       </v-row>
+      <MDBToast
+          v-model="message.show"
+          id="basic-primary-example"
+          autohide
+          :delay="2000"
+          position="top-right"
+          appendToBody
+          stacking
+          width="350px"
+          :toast="message.type"
+      >
+        <template #title>
+          {{message.title}}
+        </template>
+        {{message.message}}
+      </MDBToast>
     </v-form>
+
   </div>
 </template>
