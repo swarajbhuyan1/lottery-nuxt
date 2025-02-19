@@ -30,45 +30,51 @@ import {
       icon: LayoutDashboardIcon,
       to: '/'
     },
-    {
-      title: "Button",
-      icon: CircleDotIcon,
-      to: "/ui-components/buttons",
-    },
-    {
-      title: "Cards",
-      icon: BoxMultiple1Icon,
-      to: "/ui-components/cards",
-    },
-    {
-      title: "Tables",
-      icon: BorderAllIcon,
-      to: "/ui-components/tables",
-    },
-
-    { header: 'Auth' },
-    {
-      title: 'Login',
-      icon: LoginIcon,
-      to: '/auth/login'
-  },
+    // {
+    //   title: "Button",
+    //   icon: CircleDotIcon,
+    //   to: "/ui-components/buttons",
+    // },
+    // {
+    //   title: "Cards",
+    //   icon: BoxMultiple1Icon,
+    //   to: "/ui-components/cards",
+    // },
+    // {
+    //   title: "Tables",
+    //   icon: BorderAllIcon,
+    //   to: "/ui-components/tables",
+    // },
+    { header: 'User Management' },
   {
-      title: 'Register',
+      title: 'Users',
       icon: UserPlusIcon,
-      to: '/auth/register'
+      to: '/users'
   },
-  { header: 'Extra' },
+  { header: 'Settings' },
   {
-      title: 'Icons',
+      title: 'Slot Categories',
       icon: MoodHappyIcon,
-      to: '/pages/icons'
+      to: '/slot-categories'
   },
   {
-      title: 'Sample Page',
+      title: 'Slots',
       icon: ApertureIcon,
       to: '/pages/sample-page'
   },
-  
+
+    { header: 'Transaction' },
+    {
+      title: 'User Transactions',
+      icon: MoodHappyIcon,
+      to: '/pages/icons'
+    },
+    {
+      title: 'Set Commissions',
+      icon: ApertureIcon,
+      to: '/pages/sample-page'
+    },
+
   ];
   
   export default adminSidebarItem;

@@ -3,6 +3,4 @@ export interface User {
     name: string
     email: string
     mobile : string
-    locationData : object
-    location_name : string
 }

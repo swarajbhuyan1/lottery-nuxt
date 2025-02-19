@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import {useUserStore} from "~/store/user";
+import type {SlotCategory} from "~/types/slot-category";
 const props = defineProps({
     title: String
 });
@@ -9,11 +9,12 @@ import {
   MDBBadge,MDBNavbar,MDBNavbarBrand,MDBDropdown, MDBDropdownToggle, MDBDropdownMenu, MDBDropdownItem
 } from 'mdb-vue-ui-kit';
 import type { ComponentSize } from 'element-plus'
-
 import type { QueryParams, User} from '~/types'
 import { ref } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
-const userStore = useUserStore();
+import {useSlotCategoryStore} from "~/store/slot-category";
+import FormModal from "~/components/admin/slot-categories/component/FormModal.vue";
+const slotCategoryStore = useSlotCategoryStore();
 
 definePageMeta({
   middleware: 'auth'
@@ -32,6 +33,7 @@ const searchTerm = ref('')
 const total = ref(0)
 const size = ref<ComponentSize>('default')
 const tableLoading = ref(false)
+const formModal = ref();
 
 const handleSizeChange = (val: number) => {
   router.push({ query: { ...route.query, length: val.toString() } })
@@ -49,7 +51,7 @@ watchEffect(() => {
 
 const fetchData = async () => {
 
-  const {data,current_page, total : totalRecords} = await userStore.getData({
+  const {data,current_page, total : totalRecords} = await slotCategoryStore.getData({
     length : pageSize.value,
     page : currentPage.value,
     search : searchTerm.value
@@ -80,7 +82,7 @@ const onClear = async () => {
   searchTerm.value = ''
   await router.push({query: {...route.query, search: ''}})
 }
-const formModal = ref();
+
 const openModal = () => {
   formModal.value.setFormRecord('create')
 }
@@ -88,7 +90,7 @@ const openModal = () => {
 const handleClick = (row : any) => {
   formModal.value.setFormRecord('update', row)
 }
-const successHandler = (data : User) => {
+const successHandler = (data : SlotCategory) => {
   fetchData();
 }
 </script>
@@ -97,7 +99,7 @@ const successHandler = (data : User) => {
   <v-card elevation="10">
     <MDBNavbar light bg="light" container class="mb-6 px-3">
       <div class="d-flex w-100 align-items-center justify-content-between flex-wrap">
-        <MDBNavbarBrand href="#" class="me-auto">Users</MDBNavbarBrand>
+        <MDBNavbarBrand href="#" class="me-auto">Slot Categories</MDBNavbarBrand>
 
         <!-- Search Input & Button -->
         <div class="d-flex flex-wrap align-items-center">
@@ -115,7 +117,7 @@ const successHandler = (data : User) => {
         </div>
 
         <!-- Add Button -->
-        <MDBBtn href="#" class="ms-2" color="dark"> Add New</MDBBtn>
+        <MDBBtn href="#" class="ms-2" color="dark" @click="openModal"> Add New</MDBBtn>
       </div>
     </MDBNavbar>
 
@@ -127,19 +129,19 @@ const successHandler = (data : User) => {
               {{ scope.$index + 1 }}
             </template>
           </el-table-column>
+          <el-table-column label="IMAGE">
+            <template #default="scope">
+              <a href="javascript:void(0)" @click="handleClick(scope.row)">{{ scope.row.name }}</a>
+            </template>
+          </el-table-column>
           <el-table-column label="NAME">
             <template #default="scope">
               <a href="javascript:void(0)" @click="handleClick(scope.row)">{{ scope.row.name }}</a>
             </template>
           </el-table-column>
-          <el-table-column label="EMAIL">
+          <el-table-column label="MULTIPLIERS">
             <template #default="scope">
               {{ scope.row.email }}
-            </template>
-          </el-table-column>
-          <el-table-column label="MOBILE">
-            <template #default="scope">
-              {{ scope.row.mobile }}
             </template>
           </el-table-column>
           <el-table-column label="STATUS">
@@ -196,7 +198,7 @@ const successHandler = (data : User) => {
       />
     </v-card-item>
   </v-card>
-
+  <FormModal ref="formModal" @on-success="successHandler"/>
 </template>
 
 <style lang="scss" scoped>

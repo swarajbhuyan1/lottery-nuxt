@@ -17,7 +17,7 @@ export default defineNuxtConfig({
   modules: [
     'nuxt-auth-utils',
     '@pinia/nuxt',
-    'pinia-plugin-persistedstate/nuxt',
+    'pinia-plugin-persistedstate/nuxt','@element-plus/nuxt'
   ],
   runtimeConfig: {
     apiSecret: '123',

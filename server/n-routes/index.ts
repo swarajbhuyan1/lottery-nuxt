@@ -1,5 +1,15 @@
 import {postLogin, getLogout, postRegister, postVerifyOtp} from '../controllers/auth.controller'
 
+import {
+    getData as getAllUser
+} from '../controllers/user.controller'
+
+import {
+    getData as getAllSlotCategory,
+    postRecord as postSlotCategory
+} from '../controllers/slot-category.controller'
+
+
 type HttpMethod = 'get' | 'post' | 'put' | 'delete';
 interface RouteElement {
     method: HttpMethod;
@@ -32,6 +42,25 @@ export const routes:RouteElement[] = [
         url : '/logout',
         middleware : [],
         handler: getLogout
+    },
+    {
+        method: 'get',
+        url : '/users',
+        middleware : [],
+        handler: getAllUser
+    },
+
+    {
+        method: 'get',
+        url : '/admin/slot-categories',
+        middleware : [],
+        handler: getAllSlotCategory
+    },
+    {
+        method: 'post',
+        url : '/admin/slot-categories',
+        middleware : [],
+        handler: postSlotCategory
     },
 
 ]

@@ -28,5 +28,9 @@
   },
   "overrides": {
     "nth-check": "2.1.1"
+  },
+  "devDependencies": {
+    "@element-plus/nuxt": "^1.1.1",
+    "element-plus": "^2.9.4"
   }
 }
