@@ -19,11 +19,12 @@ export const useSlotCategoryStore = defineStore('slot-category', {
                 throw error;
             }
         },
+
         async post (obj : any) {
             const response = await fetch(`/api/admin/slot-categories`, {
                 method: 'POST',
                 headers: {
-                    'content-type': 'multipart/form-data'
+                    'Content-Type': 'application/json'
                 },
                 body: JSON.stringify(obj)
             });

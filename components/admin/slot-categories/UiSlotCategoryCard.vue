@@ -131,7 +131,7 @@ const successHandler = (data : SlotCategory) => {
           </el-table-column>
           <el-table-column label="IMAGE">
             <template #default="scope">
-              <a href="javascript:void(0)" @click="handleClick(scope.row)">{{ scope.row.name }}</a>
+              <img :src="scope.row.image" class="img-fluid rounded" height="30%" />
             </template>
           </el-table-column>
           <el-table-column label="NAME">
@@ -141,13 +141,21 @@ const successHandler = (data : SlotCategory) => {
           </el-table-column>
           <el-table-column label="MULTIPLIERS">
             <template #default="scope">
-              {{ scope.row.email }}
+              {{
+                Array.isArray(scope.row.multipliers)
+                    ? scope.row.multipliers.map(num => num + 'x').join(', ')
+                    : (typeof scope.row.multipliers === 'string' && scope.row.multipliers.trim() !== ''
+                        ? JSON.parse(scope.row.multipliers).map(num => num + 'x').join(', ')
+                        : '--')
+              }}
             </template>
           </el-table-column>
+
+
           <el-table-column label="STATUS">
             <template #default="scope">
-              <MDBBadge :color="scope.row.is_active ? 'success' : 'danger'">
-                {{ scope.row.is_active ? 'Active' : 'Inactive' }}
+              <MDBBadge :color="scope.row.status ? 'success' : 'danger'">
+                {{ scope.row.status ? 'Active' : 'Inactive' }}
               </MDBBadge>
             </template>
           </el-table-column>

@@ -11,10 +11,11 @@ const formStatus = ref("create");
 const initObject = {
   id: "",
   name: "",
-  image: {},
+  image: null as string | null, // Will store Base64 string
   multipliers: "",
-  status: true, // Default checked
+  status: true,
 };
+
 
 // Reactive form object
 const form = reactive({ ...initObject });
@@ -63,57 +64,61 @@ const setFormRecord = (status: string = "create", value = {}) => {
 };
 const slotCategoryStore = useSlotCategoryStore();
 
-
-const handleFileInput = (files:any) => {
-  form.image = files && files.length > 0 ? files[0] : null; // Store only the first file
+const handleFileInput = async (event: Event) => {
+  const files = (event.target as HTMLInputElement).files;
+  if (files && files.length > 0) {
+    form.image = await convertToBase64(files[0]);
+    console.log("Base64 Image: ", form.image);
+  } else {
+    form.image = null;
+    console.log("No image selected.");
+  }
 };
 
-const payload = () => {
-  return {
-    id: form.id,
-    name: form.name,
-    image: form.image,
-    multipliers: JSON.parse(form.multipliers), // Convert to array if it's in string format
-    status: form.status
-  };
+
+const convertToBase64 = (file: File): Promise<string> => {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onload = () => {
+      console.log("Base64 string: ", reader.result); // Log during conversion
+      resolve(reader.result as string);
+    };
+    reader.onerror = error => {
+      console.error("FileReader error: ", error); // Log any errors
+      reject(error);
+    };
+  });
 };
+
+
 // Form submission
 const onSubmit = async () => {
-  // Ensure form validation is triggered
   if (!formRef.value) return;
 
-  const { valid } = await formRef.value.validate(); // Check valid property
-
+  const { valid } = await formRef.value.validate();
   if (!valid) {
     showError("Please fill in the required fields correctly.");
     return;
   }
-console.log(form);
+
   try {
     formLoading.value = true;
-    const response = await slotCategoryStore.post(payload());
-    // API call successful
+    console.log("Submitted", form);
+    // Send form as JSON
+    const response = await slotCategoryStore.post(form);
     formLoading.value = false;
     showSuccess("Form submitted successfully!");
     closeModal();
     emit("onSuccess");
   } catch (error) {
     formLoading.value = false;
-
-    // Ensure error has a message
-    const errorMessage = error?.response?.data?.message || "An error occurred while submitting.";
-
-    message.value = {
-      show: true,
-      type: "danger",
-      title: "Error",
-      message: errorMessage
-    };
-
-    console.error("Submission error:", errorMessage);
+    console.error("Submission error:", error);
+    showError("Failed to submit form. Please try again.");
   }
-
 };
+
+
 
 
 
@@ -146,7 +151,6 @@ defineExpose({ openModal, setFormRecord });
         <v-card-title>
           <span class="font-weight-medium" >Slot Categories</span>
         </v-card-title>
-        {{JSON.stringify(form.image, true)}}
         <v-card-text>
           <v-label class="font-weight-medium mb-1">Name</v-label>
           <v-text-field
@@ -157,13 +161,19 @@ defineExpose({ openModal, setFormRecord });
               :rules="nameRules"
           ></v-text-field>
           <v-label class="font-weight-medium mb-1">Image</v-label>
+<!--          <input type="file" @change="handleFileInput($event.target.files)" />-->
+
           <v-file-input
               label="Image"
-              :rules="imageRules"
               accept="image/*"
               type="file"
-              @update:modelValue="handleFileInput"
-          ></v-file-input>
+              :rules="imageRules"
+              @change="handleFileInput($event)"
+              :clearable="false"
+              show-size
+              single-line
+          />
+
 
 
 

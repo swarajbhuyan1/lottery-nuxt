@@ -34,15 +34,17 @@ export const getData = async (event: H3Event) => {
     }
 
 }
+
 export const postRecord = async (event : H3Event) => {
-    const bodyData : Register = await readBody(event)
+    const bodyData = await readBody(event)
     try {
+        const axiosWrapper = event.context.axios;
         const response = await axiosWrapper.post('/admin/slot-categories', bodyData);
+
         return {
             ...response.data
         }
-    }
-    catch (error) {
+    } catch (error) {
         console.log(error)
         return {
             message : 'error',error
